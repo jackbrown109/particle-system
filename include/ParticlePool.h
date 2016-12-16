@@ -11,6 +11,7 @@
 #include <glm/glm.hpp>
 #include <glm/ext.hpp>
 
+// Max Particles to be used
 #define MAX_PARTICLES 16384
 
 
@@ -32,6 +33,7 @@ protected:
 private:
 	Particles particles[MAX_PARTICLES];
 
+	// Create a pointer to the first available particle
 	Particles* pFirstAvailable;
 
 };

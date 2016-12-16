@@ -26,13 +26,14 @@ bool MyApplication::onCreate(int a_argc, char* a_argv[])
 	// initialise the Gizmos helper class
 	Gizmos::create();
 
+	// Sets the values stored by the Emitter
 	Emitter1 = new Emitter(
 		glm::vec4(0, 0, 0, 0), //Position
-		1.f, //Velocity
+		5.f, //Velocity
 		glm::vec4(1, 1, 1, 0.1f), // Colour
 		glm::vec4(0.f, 1.f, 0.f, 0.f), //Direction - x,y,z,w
-		glm::vec4(0.5f, 0.5f, 0.5f, 0.f), // Spread
-		100.f); //LifeSpan
+		glm::vec4(0.6f, 0.5f, 0.6f, 0.f), // Spread
+		1000.f * glm::linearRand(-1.f, 1.f)); //LifeSpan
 
 	
 
@@ -68,29 +69,30 @@ void MyApplication::onUpdate(float a_deltaTime)
 	// clear all gizmos from last frame
 	Gizmos::clear();
 	
+	// Sets a pointer to the particles class
 	Particles *p;
+	// Calls update in the Emitter class
 	Emitter1->Update(a_deltaTime, m_cameraMatrix);
 
-	int jank = 0;
-
+	// For each particle in the array
 	for (int i = 0; i < MAX_PARTICLES; i++)
 	{
+		//get a particle
 		p = Emitter1->getParticle(i);
 		if (p)
 		{
+			// If the particle is alive
 			if (p->IsAlive())
 			{
-				jank++;
+				// Call the draw function in the Emitter class 
 				Emitter1->Draw(p->GetPosition(), p->GetColour(), m_cameraMatrix);
-				//Gizmos::addSphere(glm::vec3(p->GetPosition()), 10, 10, 1, p->GetColour());
-				//Gizmos::addBillboard(p->GetPosition(), glm::vec4(1, 1, 1, 1), glm::vec2(1, 1), m_cameraMatrix);
-
 			}
 		}
 	}
 
-	//std::cout << 1 / a_deltaTime << std::endl;//FPS counter
-	//std::cout << jank << std::endl;
+	// FPS counter
+	std::cout << 1 / a_deltaTime << std::endl;
+	
 
 	// add an identity matrix gizmo
 	Gizmos::addTransform( glm::mat4(1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1) );
@@ -130,6 +132,7 @@ void MyApplication::onDestroy()
 	// clean up anything we created
 	TextureManager::DestroyInstance();
 
+	//Sets Emitter to null and deletes it
 	Emitter1 = nullptr;
 	delete Emitter1;
 

@@ -1,9 +1,2 @@
-﻿  MyApplication.cpp
-t:\particle system\include\particles.h(26): warning C4100: 'a_live': unreferenced formal parameter
-t:\particle system\include\particles.h(28): warning C4100: 'a_live': unreferenced formal parameter
-t:\particle system\source\myapplication.cpp(24): warning C4100: 'a_argv': unreferenced formal parameter
-t:\particle system\source\myapplication.cpp(24): warning C4100: 'a_argc': unreferenced formal parameter
-t:\particle system\source\myapplication.cpp(84): warning C4239: nonstandard extension used: 'argument': conversion from 'glm::vec4' to 'glm::vec4 &'
-  t:\particle system\source\myapplication.cpp(84): note: A non-const reference may only be bound to an lvalue
-  testProject.vcxproj -> T:\Particle System\proj\vs2015\../../bin\testProject.exe
+﻿  testProject.vcxproj -> T:\Particle System\proj\vs2015\../../bin\testProject.exe
   testProject.vcxproj -> T:\Particle System\proj\vs2015\../../bin\testProject.pdb (Partial PDB)

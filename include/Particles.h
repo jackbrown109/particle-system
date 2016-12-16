@@ -20,7 +20,7 @@
 
 
 //State when particle is in use
-struct live//  Holds the particles state when it's being animated
+struct live // Holds the particles state when it's being animated
 {
 	live() {}; //constructor
 	live(const live& a_live) {}; // copy constructor
@@ -29,7 +29,7 @@ struct live//  Holds the particles state when it's being animated
 	
 	glm::vec4 m_particlePosition; //position of the particle
 	glm::vec4 m_particleDirection; // direction of the emitted particle
-	glm::vec4 m_colour;
+	glm::vec4 m_colour; // Colour of emitted particles
 	float m_velocity; // Velocity of the particle
 	float m_lifeSpan; // How long the particle will live
 	bool bIsAlive;
@@ -46,15 +46,14 @@ public:
 	Particles();
 	// Copy Constructor
 	Particles(const Particles& a_particle);
-
-	Particles(const glm::vec4 a_particlePos, const float a_velocity, const glm::vec4 a_colour, const glm::vec4 a_particleDirection, float a_lifeSpan);
-
 	// Destructor
 	~Particles();
+	// Goes to initialise
+	Particles(const glm::vec4 a_particlePos, const float a_velocity, const glm::vec4 a_colour, const glm::vec4 a_particleDirection, float a_lifeSpan);
+
 
 	// Declare the Initialise function in Particles.cpp
 	void Initialise(const glm::vec4 a_particlePosition, const float a_velocity, const glm::vec4 a_colour, const glm::vec4 a_particleDirection, float a_lifeSpan);
-
 	// Declare the Update function in Particles.cpp
 	bool UpdateAndCheckAlive(const float a_deltaTime);
 
@@ -88,10 +87,7 @@ protected:
 		// Reference to the live struct
 		live _live;
 
-		// State when particle is unavailable
-		Particles* next; // Pointer to the next available particle
-
-		
+		Particles* next; // Pointer to the next available particle	
 	};
 	uState* state;
 

@@ -62,26 +62,28 @@ void Particles::Initialise(const glm::vec4 a_particlePosition, const float a_vel
 //===========================================================================
 bool Particles::UpdateAndCheckAlive(const float a_deltaTime)
 {
+	// Sets the particle decay value to deltaTime
 	m_iParticleDecay += a_deltaTime;
 
 	//std::cout << state->_live.m_lifeSpan << std::endl;
 
+	// If lifeSpan reaches 0 
 	if (m_iParticleDecay >= state->_live.m_lifeSpan)
 	{
+		//set the bIsAlive bool to false
 		state->_live.bIsAlive = false;
-		return false;
+		return false; // return false from UpdateAndCheckAlive
 	}
 	
-
+	// If lifeSpan is greater than zero
 	if (m_iParticleDecay <= state->_live.m_lifeSpan)
 	{
-		state->_live.m_lifeSpan--;
-		//state->_live.m_particleDirection = state->_live.m_particleDirection * (state->_live.m_velocity * a_deltaTime);
-		//state->_live.m_particlePosition + /*glm::normalize(*/state->_live.m_particleDirection/*)*/ + (state->_live.m_velocity * a_deltaTime);
-		state->_live.m_particlePosition +=  state->_live.m_particleDirection * state->_live.m_velocity * a_deltaTime;
-		//state._live.m_dPosY += state._live.m_dVelocityY;
-		//return m_iParticleDecay == 0;
-		return true;
+		state->_live.m_lifeSpan--; // decrease lifespan
+		
+		// Positional update for the particle
+		state->_live.m_particlePosition +=  state->_live.m_particleDirection * state->_live.m_velocity * a_deltaTime; 
+		
+		return true; // return true from UpdateAndCheckAlive
 	}
 	
 }
@@ -92,7 +94,6 @@ bool Particles::UpdateAndCheckAlive(const float a_deltaTime)
 //===========================================================================
 bool Particles::IsAlive() const
 {
-	//return m_iParticleDecay > 0;
 	return state->_live.bIsAlive;
 }
 

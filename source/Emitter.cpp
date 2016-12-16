@@ -18,6 +18,7 @@
 //===========================================================================
 Emitter::Emitter(const glm::vec4& a_emitterPosition, float a_fVelocity, const glm::vec4 a_colour, const glm::vec4& a_emitterDirection, glm::vec4 a_spread, float a_fLifeSpan)
 {
+	// Constructor calls initialise to initialise variables
 	Initialise(a_emitterPosition, a_fVelocity, a_colour, a_emitterDirection, a_spread, a_fLifeSpan);
 }
 
@@ -50,7 +51,7 @@ void Emitter::Initialise(const glm::vec4& a_emitterPosition, float a_fVelocity, 
 	m_iParticleDecay = 0;
 	m_spread = a_spread;
 
-	
+	// Sets all particles to nullptr on initialise
 	for (int i = 0; i < MAX_PARTICLES; i++)
 	{
 		m_pParticles[i] = nullptr;
@@ -62,31 +63,37 @@ void Emitter::Initialise(const glm::vec4& a_emitterPosition, float a_fVelocity, 
 //===========================================================================
 void Emitter::Update(const float a_deltaTime, glm::mat4 a_camera)
 {
-
+	// Sets a pointer to the Particles class
 	Particles *p;
+
+	// Sets an int value for iEmissionRate
 	int iEmissionRate = 0;
+
 	for (int i = 0; i < MAX_PARTICLES; i++)
 	{
+		//Emits the particles 32 at a time
 		if (iEmissionRate <= 32)
 		{
 			if (!m_pParticles[i])//if it's null
 			{
+				// Initialise a new particle
 				p = m_pParticles[i];
 				m_pParticles[i] = new Particles();
 				m_pParticles[i]->Initialise(m_emitterPosition, m_fVelocity, m_colour, getRandomDirection(), m_fLifeSpan);
-				iEmissionRate++;
+				iEmissionRate++; //increase iEmissionRate
 
 				//std::cout << i << std::endl;
 			}
 		}
 		
-
+		// If the particle isn't a nullptr
 		if (m_pParticles[i] != nullptr)
 		{
+			// If the particle has reached it's lifespan
 			if (!m_pParticles[i]->UpdateAndCheckAlive(a_deltaTime))
 			{
-				delete m_pParticles[i];
-				m_pParticles[i] = nullptr;
+				delete m_pParticles[i]; // Delete the particle
+				m_pParticles[i] = nullptr; // Set it as a nullptr
 				
 			}
 		}
@@ -140,5 +147,5 @@ glm::vec4 Emitter::getRandomDirection()
 //===========================================================================
 void Emitter::Draw(glm::vec4& a_position, glm::vec4& a_colour, glm::mat4& a_camera)
 {
-	Gizmos::addBillboard(a_position, a_colour, glm::vec2(0.2f, 0.2f), a_camera);
+	Gizmos::addBillboard(a_position, a_colour, glm::vec2(0.2f, 0.2f), a_camera); // vec2 floats control size of billboards
 }
