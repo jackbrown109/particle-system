@@ -16,9 +16,9 @@
 //===========================================================================
 // Constructor
 //===========================================================================
-Emitter::Emitter(const glm::vec4& a_emitterPosition, float a_fVelocity, const glm::vec3& a_emitterDirection, float a_fLifeSpan)
+Emitter::Emitter(const glm::vec4& a_emitterPosition, float a_fVelocity, const glm::vec4 a_colour, const glm::vec4& a_emitterDirection, float a_fLifeSpan)
 {
-	Initialise(a_emitterPosition, a_fVelocity, a_emitterDirection, a_fLifeSpan);
+	Initialise(a_emitterPosition, a_fVelocity, a_colour, a_emitterDirection, a_fLifeSpan);
 }
 
 //===========================================================================
@@ -40,10 +40,11 @@ Emitter::~Emitter()
 //===========================================================================
 // Initialise the emitter
 //===========================================================================
-void Emitter::Initialise(const glm::vec4& a_emitterPosition, float a_fVelocity, const glm::vec3& a_emitterDirection, float a_fLifeSpan)
+void Emitter::Initialise(const glm::vec4& a_emitterPosition, float a_fVelocity, const glm::vec4 a_colour, const glm::vec4& a_emitterDirection, float a_fLifeSpan)
 {
 	m_emitterPosition = a_emitterPosition;
 	m_fVelocity = a_fVelocity;
+	m_colour = a_colour;
 	m_emitterDirection = a_emitterDirection;
 	m_fLifeSpan = a_fLifeSpan;
 	m_iParticleDecay = 0;
@@ -67,9 +68,9 @@ void Emitter::Update(const float a_deltaTime, glm::mat4 a_camera)
 		{
 			p = m_pParticles[i];
 			m_pParticles[i] = new Particles();
-			m_pParticles[i]->Initialise(m_emitterPosition, m_fVelocity, m_emitterDirection, m_fLifeSpan);
+			m_pParticles[i]->Initialise(m_emitterPosition, m_fVelocity, m_colour, m_emitterDirection, m_fLifeSpan);
 			
-			Draw(m_pParticles[i]->GetPosition(), glm::vec4(1, 1, 1, 1), a_camera);
+			Draw(m_pParticles[i]->GetPosition(), m_pParticles[i]->GetColour(), a_camera);
 		}
 
 		if (m_pParticles[i] != nullptr)
@@ -88,6 +89,25 @@ void Emitter::Update(const float a_deltaTime, glm::mat4 a_camera)
 	}
 }
 
+//===========================================================================
+// Get position of the emitter
+//===========================================================================
+glm::vec4 Emitter::GetPosition() const
+{
+	return m_emitterPosition;
+}
+
+//===========================================================================
+// Get position of the emitter
+//===========================================================================
+glm::vec4 Emitter::GetDirection() const
+{
+	return m_emitterDirection;
+}
+
+//===========================================================================
+// Get a particle to later be emitted
+//===========================================================================
 Particles* Emitter::getParticle(int index)
 {
 	if (m_pParticles[index])
@@ -97,7 +117,10 @@ Particles* Emitter::getParticle(int index)
 	return nullptr;
 }
 
+//===========================================================================
+// Draw the emitted particles
+//===========================================================================
 void Emitter::Draw(glm::vec4& a_position, glm::vec4& a_colour, glm::mat4& a_camera)
 {
-	Gizmos::addBillboard(a_position, a_colour, glm::vec2(0.1f, 0.1f), a_camera);
+	Gizmos::addBillboard(a_position, a_colour, glm::vec2(0.3f, 0.3f), a_camera);
 }

@@ -23,7 +23,7 @@ public:
 	~ParticlePool();
 
 	//Declare the Create function
-	void Create(const glm::vec4 a_particlePosition, const float a_velocity, const glm::vec3 a_particleDirection, int a_lifeSpan);
+	void Create(const glm::vec4 a_particlePosition, const float a_velocity, const glm::vec4 a_colour, const glm::vec4 a_particleDirection, int a_lifeSpan);
 	//Declare the Update function
 	void Update(const float a_deltaTime);
 

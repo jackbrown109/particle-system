@@ -5,6 +5,7 @@
 //===========================================================================
 
 #include "Particles.h"
+
 #include <iostream>
 #include <glm/glm.hpp>
 #include <glm/ext.hpp>
@@ -28,10 +29,9 @@ Particles::Particles(const Particles & a_particle)
 //===========================================================================
 // Initialise
 //===========================================================================
-Particles::Particles(const glm::vec4 a_particlePosition, const float a_velocity, const glm::vec3 a_particleDirection, float a_lifeSpan)
+Particles::Particles(const glm::vec4 a_particlePosition, const float a_velocity, const glm::vec4 a_colour, const glm::vec4 a_particleDirection, float a_lifeSpan)
 {
 	state = new uState();
-	Initialise(a_particlePosition, a_velocity, a_particleDirection, a_lifeSpan);
 }
 
 
@@ -46,13 +46,11 @@ Particles::~Particles()
 //===========================================================================
 // Initialise function puts the particle into a live state
 //===========================================================================
-void Particles::Initialise(const glm::vec4 a_particlePosition,const float a_velocity, const glm::vec3 a_particleDirection, float a_lifeSpan)
+void Particles::Initialise(const glm::vec4 a_particlePosition, const float a_velocity, const glm::vec4 a_colour,const glm::vec4 a_particleDirection, float a_lifeSpan)
 {
 	state->_live.m_particlePosition = a_particlePosition;
-	//state._live.m_dPosY = a_y;
 	state->_live.m_velocity = a_velocity;
-	//state._live.m_dVelocityX = a_xVel;
-	//state._live.m_dVelocityY = a_yVel;
+	state->_live.m_colour = a_colour;
 	state->_live.m_particleDirection = a_particleDirection;
 	state->_live.m_lifeSpan = a_lifeSpan * a_particleDirection.y;
 }
@@ -87,9 +85,9 @@ bool Particles::IsAlive() const
 //===========================================================================
 // GetNext function gets the next available particle in the list
 //===========================================================================
-void Particles::GetNext(Particles* i) const
+Particles* Particles::GetNext() const
 {
-	i->state->next;
+	return state->next;
 }
 
 //===========================================================================
@@ -112,7 +110,15 @@ glm::vec4 Particles::GetPosition() const
 //===========================================================================
 // GetDirection function gets the direction of the emitted particle
 //===========================================================================
-glm::vec3 Particles::GetDirection() const
+glm::vec4 Particles::GetDirection() const
 {
 	return state->_live.m_particleDirection;
+}
+
+//===========================================================================
+// GetColour function gets the colour of the emitted particle
+//===========================================================================
+glm::vec4 Particles::GetColour() const
+{
+	return state->_live.m_colour;
 }

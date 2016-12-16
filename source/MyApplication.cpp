@@ -25,8 +25,20 @@ bool MyApplication::onCreate(int a_argc, char* a_argv[])
 	// initialise the Gizmos helper class
 	Gizmos::create();
 
-	Emitter1 = new Emitter(glm::vec4(0, 0, 0, 1), 2.f, glm::vec3(1.2f, 1.2f, 1.2f), 100.f);
-	Emitter1->Initialise(glm::vec4(0 ,0 ,0 , 1), 2.f, glm::vec3(1.2f,1.2f,1.2f), 100.f);
+	Emitter1 = new Emitter(
+		glm::vec4(0, 0, 0, 1), //Position
+		2.f, //Velocity
+		glm::vec4(1, 1, 1, 1), // Colour
+		glm::vec4(1.2f, 1.2f, 1.2f, 1.f), //Direction 
+		1.f); //LifeSpan
+
+	Emitter1->Initialise(
+		glm::vec4(0 ,0 ,0 , 1), // Position
+		2.f, // Velocity
+		glm::vec4(1, 1, 1, 1), // Colour
+		glm::vec4(1.2f,1.2f,1.2f, 1.f), // Direction
+		1.f); //LifeSpan
+
 	//Emitter1->Draw();
 
 

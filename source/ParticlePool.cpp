@@ -6,6 +6,8 @@
 
 #include "ParticlePool.h"
 #include "Particles.h"
+#include "Emitter.h"
+
 #include <iostream>
 #include <cassert>
 #include <glm/glm.hpp>
@@ -26,7 +28,7 @@ ParticlePool::ParticlePool()
 	}
 
 	// The last particle terminates the list
-	particles[MAX_PARTICLES - 1].SetNext(NULL);
+	particles[MAX_PARTICLES - 1].SetNext(nullptr);
 }
 
 //===========================================================================
@@ -40,17 +42,17 @@ ParticlePool::~ParticlePool()
 //===========================================================================
 // Create function lets external code create new particles
 //===========================================================================
-void ParticlePool::Create(const glm::vec4 a_particlePosition, const float a_velocity, const glm::vec3 a_particleDirection, int a_lifeSpan)
+void ParticlePool::Create(const glm::vec4 a_particlePosition, const float a_velocity, const glm::vec4 a_colour, const glm::vec4 a_particleDirection, int a_lifeSpan)
 {
 	// Checks to see if the pool isn't full  
 	assert(pFirstAvailable != NULL);
 
 	// Remove the particle from the available list
 	Particles* pNewParticle = pFirstAvailable;
-	pNewParticle->GetNext(pFirstAvailable);
+	pNewParticle->GetNext();
 
 	// Initialise the particle
-	pNewParticle->Initialise(a_particlePosition, a_velocity, a_particleDirection, a_lifeSpan);
+	pNewParticle->Initialise(a_particlePosition, a_velocity, a_colour, a_particleDirection, a_lifeSpan);
 
 }
 
@@ -67,6 +69,7 @@ void ParticlePool::Update(const float a_deltaTime)
 			// Add this particle to the front of the list
 			particles[i].SetNext(pFirstAvailable);
 			pFirstAvailable = &particles[i];
+
 		}
 	}
 }
