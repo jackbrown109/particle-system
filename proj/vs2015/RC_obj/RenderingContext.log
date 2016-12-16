@@ -1,0 +1,16 @@
+﻿  Particles.cpp
+c:\users\jackb\onedrive\documents\3d-rendering-context\include\particles.h(26): warning C4100: 'a_live': unreferenced formal parameter
+c:\users\jackb\onedrive\documents\3d-rendering-context\include\particles.h(28): warning C4100: 'a_live': unreferenced formal parameter
+c:\users\jackb\onedrive\documents\3d-rendering-context\source\particles.cpp(23): warning C4100: 'a_particle': unreferenced formal parameter
+c:\users\jackb\onedrive\documents\3d-rendering-context\source\particles.cpp(65): warning C4244: '+=': conversion from 'const float' to 'int', possible loss of data
+  Emitter.cpp
+c:\users\jackb\onedrive\documents\3d-rendering-context\include\particles.h(26): warning C4100: 'a_live': unreferenced formal parameter
+c:\users\jackb\onedrive\documents\3d-rendering-context\include\particles.h(28): warning C4100: 'a_live': unreferenced formal parameter
+c:\users\jackb\onedrive\documents\3d-rendering-context\source\emitter.cpp(27): warning C4100: 'a_Emitter': unreferenced formal parameter
+c:\users\jackb\onedrive\documents\3d-rendering-context\source\emitter.cpp(72): warning C4239: nonstandard extension used: 'argument': conversion from 'glm::tvec4<float,0>' to 'glm::vec4 &'
+  c:\users\jackb\onedrive\documents\3d-rendering-context\source\emitter.cpp(72): note: A non-const reference may only be bound to an lvalue
+c:\users\jackb\onedrive\documents\3d-rendering-context\source\emitter.cpp(72): warning C4239: nonstandard extension used: 'argument': conversion from 'glm::vec4' to 'glm::vec4 &'
+  c:\users\jackb\onedrive\documents\3d-rendering-context\source\emitter.cpp(72): note: A non-const reference may only be bound to an lvalue
+  Generating Code...
+c:\users\jackb\onedrive\documents\3d-rendering-context\source\particles.cpp(76): warning C4715: 'Particles::UpdateAndCheckAlive': not all control paths return a value
+  RenderingContext.vcxproj -> C:\Users\jackb\OneDrive\Documents\3d-rendering-context\proj\vs2015\../../lib\RenderingContext.lib
