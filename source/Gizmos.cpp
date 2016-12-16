@@ -612,9 +612,13 @@ void Gizmos::addHermiteSpline(const glm::vec3& a_start, const glm::vec3& a_end,
 	}
 }
 
+//===========================================================================
+// addBillboard function creates billboard where the particle 
+// always faces the camera.
+//===========================================================================
 void Gizmos::addBillboard(glm::vec4& a_position, glm::vec4& a_colour, glm::vec2 a_size, glm::mat4& a_camera)
 {
-	a_colour = glm::mix(glm::vec4(1, 0, 0, 1), glm::vec4(1, 1, 1, 1), 1.0);
+	
 	glm::vec3 vertex[4];
 	glm::vec3 X(a_size.x, 0, 0);
 	glm::vec3 Y(0, a_size.y, 0);

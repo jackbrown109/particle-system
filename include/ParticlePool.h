@@ -11,7 +11,7 @@
 #include <glm/glm.hpp>
 #include <glm/ext.hpp>
 
-#define MAX_PARTICLES 1000
+#define MAX_PARTICLES 16384
 
 
 class ParticlePool

@@ -1,19 +1,9 @@
-﻿RenderingContext.lib(glew.obj) : warning LNK4099: PDB 'glew_static.pdb' was not found with 'RenderingContext.lib(glew.obj)' or at 'C:\Users\jackb\OneDrive\Documents\3d-rendering-context\bin\glew_static.pdb'; linking object as if no debug info
-RenderingContext.lib(wgl_context.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'RenderingContext.lib(wgl_context.obj)' or at 'C:\Users\jackb\OneDrive\Documents\3d-rendering-context\bin\glfw.pdb'; linking object as if no debug info
-RenderingContext.lib(winmm_joystick.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'RenderingContext.lib(winmm_joystick.obj)' or at 'C:\Users\jackb\OneDrive\Documents\3d-rendering-context\bin\glfw.pdb'; linking object as if no debug info
-RenderingContext.lib(win32_window.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'RenderingContext.lib(win32_window.obj)' or at 'C:\Users\jackb\OneDrive\Documents\3d-rendering-context\bin\glfw.pdb'; linking object as if no debug info
-RenderingContext.lib(win32_tls.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'RenderingContext.lib(win32_tls.obj)' or at 'C:\Users\jackb\OneDrive\Documents\3d-rendering-context\bin\glfw.pdb'; linking object as if no debug info
-RenderingContext.lib(win32_time.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'RenderingContext.lib(win32_time.obj)' or at 'C:\Users\jackb\OneDrive\Documents\3d-rendering-context\bin\glfw.pdb'; linking object as if no debug info
-RenderingContext.lib(win32_monitor.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'RenderingContext.lib(win32_monitor.obj)' or at 'C:\Users\jackb\OneDrive\Documents\3d-rendering-context\bin\glfw.pdb'; linking object as if no debug info
-RenderingContext.lib(win32_init.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'RenderingContext.lib(win32_init.obj)' or at 'C:\Users\jackb\OneDrive\Documents\3d-rendering-context\bin\glfw.pdb'; linking object as if no debug info
-RenderingContext.lib(window.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'RenderingContext.lib(window.obj)' or at 'C:\Users\jackb\OneDrive\Documents\3d-rendering-context\bin\glfw.pdb'; linking object as if no debug info
-RenderingContext.lib(monitor.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'RenderingContext.lib(monitor.obj)' or at 'C:\Users\jackb\OneDrive\Documents\3d-rendering-context\bin\glfw.pdb'; linking object as if no debug info
-RenderingContext.lib(input.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'RenderingContext.lib(input.obj)' or at 'C:\Users\jackb\OneDrive\Documents\3d-rendering-context\bin\glfw.pdb'; linking object as if no debug info
-RenderingContext.lib(init.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'RenderingContext.lib(init.obj)' or at 'C:\Users\jackb\OneDrive\Documents\3d-rendering-context\bin\glfw.pdb'; linking object as if no debug info
-RenderingContext.lib(context.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'RenderingContext.lib(context.obj)' or at 'C:\Users\jackb\OneDrive\Documents\3d-rendering-context\bin\glfw.pdb'; linking object as if no debug info
-SOIL.lib(image_DXT.obj) : warning LNK4099: PDB 'SOIL.pdb' was not found with 'SOIL.lib(image_DXT.obj)' or at 'C:\Users\jackb\OneDrive\Documents\3d-rendering-context\bin\SOIL.pdb'; linking object as if no debug info
-SOIL.lib(image_helper.obj) : warning LNK4099: PDB 'SOIL.pdb' was not found with 'SOIL.lib(image_helper.obj)' or at 'C:\Users\jackb\OneDrive\Documents\3d-rendering-context\bin\SOIL.pdb'; linking object as if no debug info
-SOIL.lib(SOIL.obj) : warning LNK4099: PDB 'SOIL.pdb' was not found with 'SOIL.lib(SOIL.obj)' or at 'C:\Users\jackb\OneDrive\Documents\3d-rendering-context\bin\SOIL.pdb'; linking object as if no debug info
-SOIL.lib(stb_image_aug.obj) : warning LNK4099: PDB 'SOIL.pdb' was not found with 'SOIL.lib(stb_image_aug.obj)' or at 'C:\Users\jackb\OneDrive\Documents\3d-rendering-context\bin\SOIL.pdb'; linking object as if no debug info
-  testProject.vcxproj -> C:\Users\jackb\OneDrive\Documents\3d-rendering-context\proj\vs2015\../../bin\testProject.exe
-  testProject.vcxproj -> C:\Users\jackb\OneDrive\Documents\3d-rendering-context\proj\vs2015\../../bin\testProject.pdb (Partial PDB)
+﻿  MyApplication.cpp
+t:\particle system\include\particles.h(26): warning C4100: 'a_live': unreferenced formal parameter
+t:\particle system\include\particles.h(28): warning C4100: 'a_live': unreferenced formal parameter
+t:\particle system\source\myapplication.cpp(24): warning C4100: 'a_argv': unreferenced formal parameter
+t:\particle system\source\myapplication.cpp(24): warning C4100: 'a_argc': unreferenced formal parameter
+t:\particle system\source\myapplication.cpp(84): warning C4239: nonstandard extension used: 'argument': conversion from 'glm::vec4' to 'glm::vec4 &'
+  t:\particle system\source\myapplication.cpp(84): note: A non-const reference may only be bound to an lvalue
+  testProject.vcxproj -> T:\Particle System\proj\vs2015\../../bin\testProject.exe
+  testProject.vcxproj -> T:\Particle System\proj\vs2015\../../bin\testProject.pdb (Partial PDB)

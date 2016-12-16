@@ -48,11 +48,13 @@ Particles::~Particles()
 //===========================================================================
 void Particles::Initialise(const glm::vec4 a_particlePosition, const float a_velocity, const glm::vec4 a_colour,const glm::vec4 a_particleDirection, float a_lifeSpan)
 {
-	state->_live.m_particlePosition = a_particlePosition;
+	SetPosition(a_particlePosition);
 	state->_live.m_velocity = a_velocity;
 	state->_live.m_colour = a_colour;
-	state->_live.m_particleDirection = a_particleDirection;
-	state->_live.m_lifeSpan = a_lifeSpan * a_particleDirection.y;
+	SetDirection(a_particleDirection);
+	state->_live.m_lifeSpan = a_lifeSpan;
+	state->_live.bIsAlive = true;
+	
 }
 
 //===========================================================================
@@ -61,16 +63,27 @@ void Particles::Initialise(const glm::vec4 a_particlePosition, const float a_vel
 bool Particles::UpdateAndCheckAlive(const float a_deltaTime)
 {
 	m_iParticleDecay += a_deltaTime;
-	
-	if (!IsAlive()) return false;
-	if (m_iParticleDecay < state->_live.m_lifeSpan)
+
+	//std::cout << state->_live.m_lifeSpan << std::endl;
+
+	if (m_iParticleDecay >= state->_live.m_lifeSpan)
 	{
-		//m_iParticleDecay--;
-		state->_live.m_particlePosition += state->_live.m_velocity * a_deltaTime;
+		state->_live.bIsAlive = false;
+		return false;
+	}
+	
+
+	if (m_iParticleDecay <= state->_live.m_lifeSpan)
+	{
+		state->_live.m_lifeSpan--;
+		//state->_live.m_particleDirection = state->_live.m_particleDirection * (state->_live.m_velocity * a_deltaTime);
+		//state->_live.m_particlePosition + /*glm::normalize(*/state->_live.m_particleDirection/*)*/ + (state->_live.m_velocity * a_deltaTime);
+		state->_live.m_particlePosition +=  state->_live.m_particleDirection * state->_live.m_velocity * a_deltaTime;
 		//state._live.m_dPosY += state._live.m_dVelocityY;
 		//return m_iParticleDecay == 0;
 		return true;
 	}
+	
 }
 
 //===========================================================================
@@ -79,7 +92,8 @@ bool Particles::UpdateAndCheckAlive(const float a_deltaTime)
 //===========================================================================
 bool Particles::IsAlive() const
 {
-	return m_iParticleDecay > 0;
+	//return m_iParticleDecay > 0;
+	return state->_live.bIsAlive;
 }
 
 //===========================================================================
@@ -106,6 +120,14 @@ glm::vec4 Particles::GetPosition() const
 	return state->_live.m_particlePosition;
 }
 
+//===========================================================================
+// SetPosition function sets the position of the emitted particle
+//===========================================================================
+void Particles::SetPosition(glm::vec4 a_particlePosition) const
+{
+	state->_live.m_particlePosition = a_particlePosition;
+}
+
 
 //===========================================================================
 // GetDirection function gets the direction of the emitted particle
@@ -113,6 +135,14 @@ glm::vec4 Particles::GetPosition() const
 glm::vec4 Particles::GetDirection() const
 {
 	return state->_live.m_particleDirection;
+}
+
+//===========================================================================
+// SetDirection function sets the direction of the emitted particle
+//===========================================================================
+void Particles::SetDirection(glm::vec4 a_particlePosition) const
+{
+	state->_live.m_particleDirection = glm::vec4(normalize(a_particlePosition));
 }
 
 //===========================================================================

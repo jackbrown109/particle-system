@@ -32,6 +32,7 @@ struct live//  Holds the particles state when it's being animated
 	glm::vec4 m_colour;
 	float m_velocity; // Velocity of the particle
 	float m_lifeSpan; // How long the particle will live
+	bool bIsAlive;
 
 };
 
@@ -66,8 +67,14 @@ public:
 
 	// GetPosition gets position of particle
 	glm::vec4 GetPosition() const;
+	// SetPosition sets position of particle
+	void SetPosition(glm::vec4 a_particlePosition) const;
+
 	// GetDirection gets direction of emitted particle
 	glm::vec4 GetDirection() const;
+	// SetDirection sets direction of emitted particle
+	void SetDirection(glm::vec4 a_particlePosition) const;
+
 	// GetColour gets colour of emitted particle
 	glm::vec4 GetColour() const;
 	
@@ -91,8 +98,6 @@ protected:
 private:
 	int m_iParticleDecay; // How long until particle will be at the end of it's lifespan
 	
-	bool bIsAlive;
-
 
 
 

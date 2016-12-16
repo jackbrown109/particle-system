@@ -1,6 +1,7 @@
 #include "MyApplication.h"
 #include "Gizmos.h"
 #include "Utilities.h"
+#include <iostream>
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <glm/ext.hpp>
@@ -26,21 +27,14 @@ bool MyApplication::onCreate(int a_argc, char* a_argv[])
 	Gizmos::create();
 
 	Emitter1 = new Emitter(
-		glm::vec4(0, 0, 0, 1), //Position
-		2.f, //Velocity
-		glm::vec4(1, 1, 1, 1), // Colour
-		glm::vec4(1.2f, 1.2f, 1.2f, 1.f), //Direction 
-		1.f); //LifeSpan
+		glm::vec4(0, 0, 0, 0), //Position
+		1.f, //Velocity
+		glm::vec4(1, 1, 1, 0.1f), // Colour
+		glm::vec4(0.f, 1.f, 0.f, 0.f), //Direction - x,y,z,w
+		glm::vec4(0.5f, 0.5f, 0.5f, 0.f), // Spread
+		100.f); //LifeSpan
 
-	Emitter1->Initialise(
-		glm::vec4(0 ,0 ,0 , 1), // Position
-		2.f, // Velocity
-		glm::vec4(1, 1, 1, 1), // Colour
-		glm::vec4(1.2f,1.2f,1.2f, 1.f), // Direction
-		1.f); //LifeSpan
-
-	//Emitter1->Draw();
-
+	
 
 	//Initialise our Texture Manager class
 	TextureManager* texManager = TextureManager::CreateInstance();
@@ -77,15 +71,26 @@ void MyApplication::onUpdate(float a_deltaTime)
 	Particles *p;
 	Emitter1->Update(a_deltaTime, m_cameraMatrix);
 
+	int jank = 0;
 
 	for (int i = 0; i < MAX_PARTICLES; i++)
 	{
 		p = Emitter1->getParticle(i);
 		if (p)
 		{
-			//Gizmos::addBillboard(p->GetPosition(), glm::vec4(1, 1, 1, 1), glm::vec2(1, 1), m_cameraMatrix);
+			if (p->IsAlive())
+			{
+				jank++;
+				Emitter1->Draw(p->GetPosition(), p->GetColour(), m_cameraMatrix);
+				//Gizmos::addSphere(glm::vec3(p->GetPosition()), 10, 10, 1, p->GetColour());
+				//Gizmos::addBillboard(p->GetPosition(), glm::vec4(1, 1, 1, 1), glm::vec2(1, 1), m_cameraMatrix);
+
+			}
 		}
 	}
+
+	//std::cout << 1 / a_deltaTime << std::endl;//FPS counter
+	//std::cout << jank << std::endl;
 
 	// add an identity matrix gizmo
 	Gizmos::addTransform( glm::mat4(1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1) );
@@ -109,6 +114,7 @@ void MyApplication::onUpdate(float a_deltaTime)
 
 void MyApplication::onDraw()
 {
+	
 	// clear the backbuffer
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	
@@ -123,6 +129,9 @@ void MyApplication::onDestroy()
 {
 	// clean up anything we created
 	TextureManager::DestroyInstance();
+
+	Emitter1 = nullptr;
+	delete Emitter1;
 
 	Gizmos::destroy();
 }

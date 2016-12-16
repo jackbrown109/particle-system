@@ -1,7 +1,77 @@
-﻿  Emitter.cpp
-c:\users\jackb\onedrive\documents\3d-rendering-context\include\particles.h(26): warning C4100: 'a_live': unreferenced formal parameter
-c:\users\jackb\onedrive\documents\3d-rendering-context\include\particles.h(28): warning C4100: 'a_live': unreferenced formal parameter
-c:\users\jackb\onedrive\documents\3d-rendering-context\source\emitter.cpp(27): warning C4100: 'a_Emitter': unreferenced formal parameter
-c:\users\jackb\onedrive\documents\3d-rendering-context\source\emitter.cpp(73): warning C4239: nonstandard extension used: 'argument': conversion from 'glm::vec4' to 'glm::vec4 &'
-  c:\users\jackb\onedrive\documents\3d-rendering-context\source\emitter.cpp(73): note: A non-const reference may only be bound to an lvalue
-  RenderingContext.vcxproj -> C:\Users\jackb\OneDrive\Documents\3d-rendering-context\proj\vs2015\../../lib\RenderingContext.lib
+﻿  ParticlePool.cpp
+t:\particle system\include\particles.h(26): warning C4100: 'a_live': unreferenced formal parameter
+t:\particle system\include\particles.h(28): warning C4100: 'a_live': unreferenced formal parameter
+t:\particle system\source\particlepool.cpp(55): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Emitter.cpp
+t:\particle system\include\particles.h(26): warning C4100: 'a_live': unreferenced formal parameter
+t:\particle system\include\particles.h(28): warning C4100: 'a_live': unreferenced formal parameter
+t:\particle system\source\emitter.cpp(27): warning C4100: 'a_Emitter': unreferenced formal parameter
+t:\particle system\deps\glm\glm\gtc\random.inl(54): warning C4244: 'argument': conversion from 'int' to 'const glm::u8', possible loss of data
+  t:\particle system\deps\glm\glm\gtc\random.inl(52): note: while compiling class template member function 'glm::tvec1<glm::u8,0> glm::detail::compute_rand<glm::detail::uint8,0,vecType>::call(void)'
+          with
+          [
+              vecType=glm::tvec1
+          ]
+  t:\particle system\deps\glm\glm\gtc\random.inl(99): note: see reference to function template instantiation 'glm::tvec1<glm::u8,0> glm::detail::compute_rand<glm::detail::uint8,0,vecType>::call(void)' being compiled
+          with
+          [
+              vecType=glm::tvec1
+          ]
+  t:\particle system\deps\glm\glm\gtc\random.inl(100): note: see reference to class template instantiation 'glm::detail::compute_rand<glm::detail::uint8,0,vecType>' being compiled
+          with
+          [
+              vecType=glm::tvec1
+          ]
+  t:\particle system\deps\glm\glm\gtc\random.inl(98): note: while compiling class template member function 'glm::tvec1<glm::u16,0> glm::detail::compute_rand<glm::detail::uint16,0,vecType>::call(void)'
+          with
+          [
+              vecType=glm::tvec1
+          ]
+  t:\particle system\deps\glm\glm\gtc\random.inl(110): note: see reference to function template instantiation 'glm::tvec1<glm::u16,0> glm::detail::compute_rand<glm::detail::uint16,0,vecType>::call(void)' being compiled
+          with
+          [
+              vecType=glm::tvec1
+          ]
+  t:\particle system\deps\glm\glm\gtc\random.inl(111): note: see reference to class template instantiation 'glm::detail::compute_rand<glm::detail::uint16,0,vecType>' being compiled
+          with
+          [
+              vecType=glm::tvec1
+          ]
+  t:\particle system\deps\glm\glm\gtc\random.inl(109): note: while compiling class template member function 'glm::tvec1<glm::uint,0> glm::detail::compute_rand<glm::detail::uint32,0,vecType>::call(void)'
+          with
+          [
+              vecType=glm::tvec1
+          ]
+  t:\particle system\deps\glm\glm\gtc\random.inl(228): note: see reference to function template instantiation 'glm::tvec1<glm::uint,0> glm::detail::compute_rand<glm::detail::uint32,0,vecType>::call(void)' being compiled
+          with
+          [
+              vecType=glm::tvec1
+          ]
+  t:\particle system\deps\glm\glm\gtc\random.inl(228): note: see reference to class template instantiation 'glm::detail::compute_rand<glm::detail::uint32,0,vecType>' being compiled
+          with
+          [
+              vecType=glm::tvec1
+          ]
+  t:\particle system\deps\glm\glm\gtc\random.inl(227): note: while compiling class template member function 'glm::tvec1<float,0> glm::detail::compute_linearRand<genType,0,glm::tvec1>::call(const glm::tvec1<float,0> &,const glm::tvec1<float,0> &)'
+          with
+          [
+              genType=float
+          ]
+  t:\particle system\deps\glm\glm\gtc\random.inl(290): note: see reference to function template instantiation 'glm::tvec1<float,0> glm::detail::compute_linearRand<genType,0,glm::tvec1>::call(const glm::tvec1<float,0> &,const glm::tvec1<float,0> &)' being compiled
+          with
+          [
+              genType=float
+          ]
+  t:\particle system\deps\glm\glm\gtc\random.inl(290): note: see reference to class template instantiation 'glm::detail::compute_linearRand<genType,0,glm::tvec1>' being compiled
+          with
+          [
+              genType=float
+          ]
+  t:\particle system\source\emitter.cpp(130): note: see reference to function template instantiation 'genType glm::linearRand<T>(genType,genType)' being compiled
+          with
+          [
+              genType=float,
+              T=float
+          ]
+  Generating Code...
+  RenderingContext.vcxproj -> T:\Particle System\proj\vs2015\../../lib\RenderingContext.lib
